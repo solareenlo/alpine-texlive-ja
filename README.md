@@ -1,7 +1,7 @@
 # solareenlo/alpine-texlive-ja
 
-[![Docker Automated build](https://img.shields.io/docker/automated/solareenlo/docker-alpine-texlive-ja.svg)](https://hub.docker.com/r/solareenlo/docker-alpine-texlive-ja/)
-[![Docker Image Size](https://images.microbadger.com/badges/image/solareenlo/docker-alpine-texlive-ja.svg)](https://microbadger.com/images/solareenlo/docker-alpine-texlive-ja "Get your own image badge on microbadger.com")
+[![Docker Automated build](https://img.shields.io/docker/automated/solareenlo/alpine-texlive-ja.svg)](https://hub.docker.com/r/solareenlo/alpine-texlive-ja/)
+[![Docker Image Size](https://images.microbadger.com/badges/image/solareenlo/alpine-texlive-ja.svg)](https://microbadger.com/images/solareenlo/alpine-texlive-ja "Get your own image badge on microbadger.com")
 
 > Minimal TeX Live image for Japanese based on alpine
 
