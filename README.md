@@ -23,10 +23,14 @@ docker pull solareenlo/alpine-texlive-ja
 ```
 
 ## Usage
-
 ```bash
-$ docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja
-$ latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
+# Dockerの中に入らずにコンパイルする.
+sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/bash -c "platex main.tex && dvipdfmx main.dvi"
+```
+```bash
+# Dockerの中に入ってコンパイルする.
+sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja
+latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
 ```
 
 ## Contribute
