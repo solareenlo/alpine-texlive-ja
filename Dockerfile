@@ -78,3 +78,7 @@ WORKDIR /workdir
 VOLUME ["/workdir"]
 
 CMD ["bash"]
+
+# References
+# - https://github.com/frol/docker-alpine-glibc
+# - https://github.com/Paperist/docker-alpine-texlive-ja

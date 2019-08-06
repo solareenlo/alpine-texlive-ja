@@ -3,6 +3,6 @@ services:
   texlive:
   ¦ image: solareenlo/alpine-texlive-ja
   ¦ build: .
-  ¦ volumes:
-  ¦ ¦ - .:/workdir
+    volumes:
+      - .:/workdir
   ¦ command: bash -c "latexmk --pvc main.tex"
