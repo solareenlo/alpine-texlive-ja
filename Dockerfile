@@ -1,16 +1,17 @@
 # Copyrighe (cnstall GNU libc ()) 2016 Kaito Udagawa
+# Copyright (c) 2015 Vlad
 # Copyright (c) 2016-2019 3846masa
 # Copyright (c) 2019 solareenlo
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
+# FROM frolvlad/alpine-glibc
 FROM alpine:3.10.1
 
 ENV LANG=C.UTF-8
 ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
 
 # Here we install GNU libc (aka glibc) and set C.UTF-8 locale as default.
-
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
     ALPINE_GLIBC_PACKAGE_VERSION="2.29-r0" && \
     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
@@ -49,8 +50,6 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
-# Here we install GNU libc ()
-
 RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
     mkdir /tmp/install-tl-unx && \
     wget -qO - ftp://tug.org/historic/systems/texlive/2019/install-tl-unx.tar.gz | \
@@ -63,9 +62,12 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
     /tmp/install-tl-unx/install-tl \
       --profile=/tmp/install-tl-unx/texlive.profile && \
     tlmgr install \
-      collection-basic collection-latex \
-      collection-latexrecommended collection-latexextra \
-      collection-fontsrecommended collection-langjapanese \
+      collection-basic\
+      collection-latex \
+      collection-latexrecommended\
+      collection-latexextra \
+      collection-fontsrecommended\
+      collection-langjapanese \
       latexmk && \
     (tlmgr install xetex || exit 0) && \
     rm -fr /tmp/install-tl-unx && \
