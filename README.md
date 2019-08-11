@@ -26,10 +26,16 @@ sudo apt install zathura
 zathura --fork main.pdf
 ```
 
+###索引を出力する
+- 上記の`sudo docker-compose up`を実行する前に以下を行う.
+```bash
+sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/bash -c "uplatex main.tex && makeindex main.idx && uplatex main.tex && dvipdfmx main.dvi"
+```
+
 ### Dockerコンテナを使って手動でコンパイルする方法
 ```bash
 # Dockerの中に入らずにコンパイルする
-sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/bash -c "platex main.tex && dvipdfmx main.dvi"
+sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/bash -c "uplatex main.tex && dvipdfmx main.dvi"
 ```
 ```bash
 # Dockerの中に入ってコンパイルする
