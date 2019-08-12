@@ -69,7 +69,7 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
       collection-latexextra \
       collection-fontsrecommended\
       collection-langjapanese \
-      latexmk
+      latexmk \
       dvipdfmx && \
     (tlmgr install xetex || exit 0) && \
     rm -fr /tmp/install-tl-unx && \
