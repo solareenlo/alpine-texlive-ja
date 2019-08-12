@@ -50,7 +50,8 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
-RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
+RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
+    apk add --no-cache --virtual .fetch-deps wget xz tar && \
     mkdir /tmp/install-tl-unx && \
     wget -qO - ftp://tug.org/historic/systems/texlive/2019/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
@@ -68,10 +69,11 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
       collection-latexextra \
       collection-fontsrecommended\
       collection-langjapanese \
-      latexmk && \
+      latexmk
+      dvipdfmx && \
     (tlmgr install xetex || exit 0) && \
     rm -fr /tmp/install-tl-unx && \
-    apk --no-cache del xz tar
+    apk del .fetch-deps
 
 RUN apk --no-cache add bash
 
