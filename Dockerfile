@@ -75,13 +75,9 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps
 
-RUN apk --no-cache add bash
-
 WORKDIR /workdir
 
-VOLUME ["/workdir"]
-
-CMD ["bash"]
+CMD ["sh"]
 
 # References
 # - https://github.com/frol/docker-alpine-glibc
