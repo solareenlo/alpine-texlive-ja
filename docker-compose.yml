@@ -1,8 +1,8 @@
-version: '3.7'
+version: '3'
 services:
   texlive:
   ¦ image: solareenlo/alpine-texlive-ja
   ¦ build: .
     volumes:
       - .:/workdir
-  ¦ command: bash -c "latexmk --pvc main.tex"
+  ¦ command: sh -c "latexmk --pvc main.tex"
