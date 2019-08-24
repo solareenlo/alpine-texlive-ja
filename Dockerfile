@@ -75,6 +75,16 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps
 
+# install noto font
+RUN apk add --no-cache font-noto-cjk-extra
+# font-noto-cjk-extraが太細字や狭広バージョン
+
+## install font map of noto for dvipdfmx
+COPY noto-otc/ /usr/share/texlive/texmf-dist/fonts/map/dvipdfmx/ptex-fontmaps/noto-otc/
+
+## use noto for uplatex
+RUN texhash && kanji-config-updmap-sys noto-otc
+
 WORKDIR /workdir
 
 CMD ["sh"]
@@ -82,3 +92,4 @@ CMD ["sh"]
 # References
 # - https://github.com/frol/docker-alpine-glibc
 # - https://github.com/Paperist/docker-alpine-texlive-ja
+# - https://github.com/vvakame/docker-review/blob/master/review-3.2/Dockerfile
