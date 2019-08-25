@@ -6,7 +6,7 @@
 # https://opensource.org/licenses/MIT
 
 # FROM frolvlad/alpine-glibc
-FROM alpine:3.10.2
+FROM alpine:edge
 
 ENV LANG=C.UTF-8
 ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
@@ -76,14 +76,14 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
     apk del .fetch-deps
 
 # install noto font
-# RUN apk add --no-cache font-noto-cjk-extra
+RUN apk --update add --no-cache font-noto-cjk-extra
 # font-noto-cjk-extraが太細字や狭広バージョン
 
 ## install font map of noto for dvipdfmx
-# COPY noto-otc/ /usr/share/texlive/texmf-dist/fonts/map/dvipdfmx/ptex-fontmaps/noto-otc/
+COPY noto-otc/ /usr/share/texlive/texmf-dist/fonts/map/dvipdfmx/ptex-fontmaps/noto-otc/
 
 ## use noto for uplatex
-# RUN texhash && kanji-config-updmap-sys noto-otc
+RUN texhash && kanji-config-updmap-sys noto-otc
 
 WORKDIR /workdir
 
