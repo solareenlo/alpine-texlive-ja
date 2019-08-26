@@ -91,13 +91,13 @@ RUN mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/google && \
          https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Medium.otf \
          https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Regular.otf \
          https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Thin.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Black.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Bold.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-DemiLight.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Light.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Medium.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Regular.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Thin.otf && \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Black.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Bold.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-DemiLight.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Light.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Medium.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Regular.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Thin.otf && \
     mktexlsr
 # 明朝体・細字（\mcfamily\ltseries）
 # 明朝体・中字（\mcfamily\mdseries）
