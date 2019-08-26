@@ -11,6 +11,7 @@ FROM alpine:3.10
 ENV LANG=C.UTF-8
 ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
 
+# Reference: https://github.com/frol/docker-alpine-glibc
 # Here we install GNU libc (aka glibc) and set C.UTF-8 locale as default.
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
     ALPINE_GLIBC_PACKAGE_VERSION="2.29-r0" && \
@@ -50,6 +51,8 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
+# Reference: https://github.com/Paperist/docker-alpine-texlive-ja
+# install texlive
 RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
     apk add --no-cache --virtual .fetch-deps wget xz tar && \
     mkdir /tmp/install-tl-unx && \
@@ -75,15 +78,27 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps
 
-# install noto font
-# RUN apk --update add --no-cache font-noto-cjk-extra
-# font-noto-cjk-extraが太細字や狭広バージョン
-
-## install font map of noto for dvipdfmx
-# COPY noto-otc/ /usr/share/texlive/texmf-dist/fonts/map/dvipdfmx/ptex-fontmaps/noto-otc/
-
-## use noto for uplatex
-# RUN texhash && kanji-config-updmap-sys noto-otc
+# install noto font jp
+# フォントをインストールする場所は以下で探し, /fonts/以下は自由なディレクトリが可能.
+# $ kpsewhich -var-value=TEXMFLOCAL
+RUN mkdir /usr/local/texlive/texmf-local/fonts/opentype/google && \
+    cd /usr/local/texlive/texmf-local/fonts/opentype/google/ && \
+    # 以下はgoogle noto font cjkのjpフォントだけをインストールしている.
+    wget https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Black.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Bold.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-DemiLight.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Light.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Medium.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Regular.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Thin.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Black.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Bold.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-DemiLight.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Light.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Medium.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Regular.otf \
+         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Thin.otf && \
+    mktexlsr
 
 WORKDIR /workdir
 
