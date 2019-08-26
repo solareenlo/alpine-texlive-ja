@@ -81,7 +81,7 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
 # install noto font jp
 # フォントをインストールする場所は以下で探し, /fonts/以下は自由なディレクトリが可能.
 # $ kpsewhich -var-value=TEXMFLOCAL
-RUN mkdir /usr/local/texlive/texmf-local/fonts/opentype/google && \
+RUN mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/google && \
     cd /usr/local/texlive/texmf-local/fonts/opentype/google/ && \
     # 以下はgoogle noto font cjkのjpフォントだけをインストールしている.
     wget https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Black.otf \
@@ -99,6 +99,16 @@ RUN mkdir /usr/local/texlive/texmf-local/fonts/opentype/google && \
          https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Regular.otf \
          https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Thin.otf && \
     mktexlsr
+# 明朝体・細字（\mcfamily\ltseries）
+# 明朝体・中字（\mcfamily\mdseries）
+# 明朝体・太字（\mcfamily\bfseries）
+# ゴシック体・中字（\gtfamily\mdseries）
+# ゴシック体・太字（\gtfamily\bfseries）
+# ゴシック体・極太（\gtfamily\ebseries）
+# 丸ゴシック体（\mgfamily）
+# 上記の7つのフォントを使うには, `.texファイル`のプリアンブルに以下の2行を追加する.
+# \usepackage[deluxe]{otf}% 多書体設定
+# \usepackage[noto-jp]{pxchfon}% 後に読み込む
 
 WORKDIR /workdir
 
