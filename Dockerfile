@@ -53,7 +53,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 
 # Reference: https://github.com/Paperist/docker-alpine-texlive-ja
 # install texlive
-RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
+RUN apk add --no-cache perl fontconfig-dev freetype-dev py-pygments && \
     apk add --no-cache --virtual .fetch-deps wget xz tar && \
     mkdir /tmp/install-tl-unx && \
     wget -qO - ftp://tug.org/historic/systems/texlive/2019/install-tl-unx.tar.gz | \
@@ -73,6 +73,7 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
       collection-fontsrecommended\
       collection-langjapanese \
       latexmk \
+      minted \
       dvipdfmx && \
     (tlmgr install xetex || exit 0) && \
     rm -fr /tmp/install-tl-unx && \

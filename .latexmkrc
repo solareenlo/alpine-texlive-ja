@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-$latex      = 'uplatex -halt-on-error -file-line-error %O %S';
+$latex      = 'uplatex -halt-on-error -file-line-error -shell-escape %O %S';
 $out_dir    = '/workdir';
 $bibtex     = 'upbibtex';
 $dvipdf     = 'dvipdfmx %O -o %D %S';
