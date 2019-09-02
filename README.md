@@ -43,6 +43,46 @@ sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja
 latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
 ```
 
+### コードのシンタックスハイライトで使用できる色を確認する
+- コードのシンタックスハイライトに`minted`を使用しているとして，以下を実行する.
+
+```bash
+sudo docker-compose exec texlive sh
+pygmentize -L styles
+```
+
+- そして，標準出力に出てきたお好きな色の様式を選んで，プリアンブルに以下のように記入する．
+
+```tex
+\usepackage[dvipdfmx]{graphicx, xcolor} % colorを使う
+
+\definecolor{monokai}{HTML}{282828} % monokaiのバックグラウンドカラー
+\usemintedstyle{monokai} % monokaiのフォントカラーを使う
+
+\usemintedstyle{vs}
+
+\usemintedstyle{solarized-dark}
+\usemintedstyle{solarized-light}
+
+% Solarized colors
+\definecolor{sbase03}{HTML}{002B36}
+\definecolor{sbase02}{HTML}{073642}
+\definecolor{sbase01}{HTML}{586E75}
+\definecolor{sbase00}{HTML}{657B83}
+\definecolor{sbase0}{HTML}{839496}
+\definecolor{sbase1}{HTML}{93A1A1}
+\definecolor{sbase2}{HTML}{EEE8D5}
+\definecolor{sbase3}{HTML}{FDF6E3}
+\definecolor{syellow}{HTML}{B58900}
+\definecolor{sorange}{HTML}{CB4B16}
+\definecolor{sred}{HTML}{DC322F}
+\definecolor{smagenta}{HTML}{D33682}
+\definecolor{sviolet}{HTML}{6C71C4}
+\definecolor{sblue}{HTML}{268BD2}
+\definecolor{scyan}{HTML}{2AA198}
+\definecolor{sgreen}{HTML}{859900}
+```
+
 ## Contribute
 PRs accepted.
 
