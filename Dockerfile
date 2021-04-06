@@ -56,7 +56,8 @@ ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 RUN apk add --no-cache perl fontconfig-dev freetype-dev py-pygments && \
     apk add --no-cache --virtual .fetch-deps wget xz tar && \
     mkdir /tmp/install-tl-unx && \
-    wget -qO - ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz | \
+    # wget -qO - ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz | \
+	curl -L ftp://tug.org/historic/systems/texlive/2020/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
     printf "%s\n" \
       "selected_scheme scheme-basic" \
