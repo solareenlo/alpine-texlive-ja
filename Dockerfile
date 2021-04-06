@@ -6,7 +6,7 @@
 # https://opensource.org/licenses/MIT
 
 # FROM frolvlad/alpine-glibc
-FROM alpine:3.10
+FROM alpine:3.13
 
 ENV LANG=C.UTF-8
 ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
@@ -14,7 +14,7 @@ ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
 # Reference: https://github.com/frol/docker-alpine-glibc
 # Here we install GNU libc (aka glibc) and set C.UTF-8 locale as default.
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
-    ALPINE_GLIBC_PACKAGE_VERSION="2.29-r0" && \
+    ALPINE_GLIBC_PACKAGE_VERSION="2.33-r0" && \
     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
     ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
     ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
