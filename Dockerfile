@@ -9,7 +9,7 @@
 FROM alpine:3.13
 
 ENV LANG=C.UTF-8
-ENV PATH /usr/local/texlive/2021/bin/x86_64-linux:$PATH
+ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 
 # Reference: https://github.com/frol/docker-alpine-glibc
 # Here we install GNU libc (aka glibc) and set C.UTF-8 locale as default.
