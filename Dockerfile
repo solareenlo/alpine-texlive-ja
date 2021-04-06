@@ -75,7 +75,7 @@ RUN apk add --no-cache curl perl fontconfig-dev freetype-dev py-pygments && \
       latexmk \
       minted \
       dvipdfmx && \
-    # (tlmgr install xetex || exit 0) && \
+    (tlmgr install xetex || exit 0) && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps
 
@@ -85,20 +85,20 @@ RUN apk add --no-cache curl perl fontconfig-dev freetype-dev py-pygments && \
 RUN mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/google && \
     cd /usr/local/texlive/texmf-local/fonts/opentype/google/ && \
     # 以下はgoogle noto font cjkのjpフォントだけをインストールしている.
-    wget https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Black.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Bold.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-DemiLight.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Light.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Medium.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Regular.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSansJP-Thin.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Black.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Bold.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-ExtraLight.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Light.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Medium.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-Regular.otf \
-         https://github.com/googlefonts/noto-cjk/raw/master/NotoSerifJP-SemiBold.otf && \
+    wget https://github.com/googlefonts/noto-cjk/raw/main/NotoSansJP-Black.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSansJP-Bold.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSansJP-DemiLight.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSansJP-Light.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSansJP-Medium.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSansJP-Regular.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSansJP-Thin.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSerifJP-Black.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSerifJP-Bold.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSerifJP-ExtraLight.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSerifJP-Light.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSerifJP-Medium.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSerifJP-Regular.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/NotoSerifJP-SemiBold.otf && \
     mktexlsr
 # 明朝体・細字（\mcfamily\ltseries）
 # 明朝体・中字（\mcfamily\mdseries）
