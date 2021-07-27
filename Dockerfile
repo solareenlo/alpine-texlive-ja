@@ -56,7 +56,7 @@ RUN mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/google && \
          https://github.com/googlefonts/noto-cjk/raw/main/Serif/NotoSerifJP-Light.otf \
          https://github.com/googlefonts/noto-cjk/raw/main/Serif/NotoSerifJP-Medium.otf \
          https://github.com/googlefonts/noto-cjk/raw/main/Serif/NotoSerifJP-Regular.otf \
-         https://github.com/googlefonts/noto-cjk/raw/main/Serif/NotoSerifJP-SemiBold.otf \
+         https://github.com/googlefonts/noto-cjk/raw/main/Serif/NotoSerifJP-SemiBold.otf && \
     mktexlsr
 # 明朝体・細字（\mcfamily\ltseries）
 # 明朝体・中字（\mcfamily\mdseries）
