@@ -1,55 +1,13 @@
-# Copyrighe (cnstall GNU libc ()) 2016 Kaito Udagawa
 # Copyright (c) 2015 Vlad
-# Copyright (c) 2016-2019 3846masa
-# Copyright (c) 2021 solareenlo
+# Copyright (c) 2016 Kaito Udagawa
+# Copyright (c) 2016-2020 3846masa
+# Copyright (c) 2020-2021 solareenlo
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
 FROM frolvlad/alpine-glibc:latest
-# FROM alpine:3.13
-#
-# ENV LANG=C.UTF-8
+
 ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
-#
-# # Reference: https://github.com/frol/docker-alpine-glibc
-# # Here we install GNU libc (aka glibc) and set C.UTF-8 locale as default.
-# RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
-#     ALPINE_GLIBC_PACKAGE_VERSION="2.33-r0" && \
-#     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-#     ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-#     ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
-#     apk add --no-cache --virtual=.build-dependencies wget ca-certificates && \
-#     echo \
-#         "-----BEGIN PUBLIC KEY-----\
-#         MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ2u1KJKUu/fW4A25y9m\
-#         y70AGEa/J3Wi5ibNVGNn1gT1r0VfgeWd0pUybS4UmcHdiNzxJPgoWQhV2SSW1JYu\
-#         tOqKZF5QSN6X937PTUpNBjUvLtTQ1ve1fp39uf/lEXPpFpOPL88LKnDBgbh7wkCp\
-#         m2KzLVGChf83MS0ShL6G9EQIAUxLm99VpgRjwqTQ/KfzGtpke1wqws4au0Ab4qPY\
-#         KXvMLSPLUp7cfulWvhmZSegr5AdhNw5KNizPqCJT8ZrGvgHypXyiFvvAH5YRtSsc\
-#         Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
-#         1QIDAQAB\
-#         -----END PUBLIC KEY-----" | sed 's/   */\n/g' > "/etc/apk/keys/sgerrand.rsa.pub" && \
-#     wget \
-#         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-#     apk add --no-cache \
-#         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-#     \
-#     rm "/etc/apk/keys/sgerrand.rsa.pub" && \
-#     /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 "$LANG" || true && \
-#     echo "export LANG=$LANG" > /etc/profile.d/locale.sh && \
-#     \
-#     apk del glibc-i18n && \
-#     \
-#     rm "/root/.wget-hsts" && \
-#     apk del .build-dependencies && \
-#     rm \
-#         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-#         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
 # Reference: https://github.com/Paperist/docker-alpine-texlive-ja
 # install texlive
@@ -60,8 +18,8 @@ RUN apk add --no-cache curl perl fontconfig-dev freetype-dev py-pygments && \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
     printf "%s\n" \
       "selected_scheme scheme-basic" \
-      "option_doc 0" \
-      "option_src 0" \
+      "tlpdbopt_install_docfiles 0" \
+      "tlpdbopt_install_srcfiles 0" \
       > /tmp/install-tl-unx/texlive.profile && \
     /tmp/install-tl-unx/install-tl \
       --profile=/tmp/install-tl-unx/texlive.profile && \
