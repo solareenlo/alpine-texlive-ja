@@ -37,6 +37,8 @@ RUN apk add --no-cache curl perl fontconfig-dev freetype-dev py-pygments && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps
 
+# TEXMF = /usr/local/texlive/2021/texmf-dist/
+
 # install noto font jp
 # フォントをインストールする場所は以下で探し, /fonts/以下は自由なディレクトリが可能.
 # $ kpsewhich -var-value=TEXMFLOCAL
