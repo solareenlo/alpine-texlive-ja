@@ -8,7 +8,7 @@ Forked from [Paperist/docker-alpine-texlive-ja](https://github.com/Paperist/dock
 
 ## Usage
 ### docker-composeを使って自動でコンパイルする方法
-```bash
+```shell
 git clone git@github.com:solareenlo/docker-alpine-texlive-ja.git
 cd docker-alpine-texlive-ja
 touch main.tex
@@ -17,7 +17,7 @@ sudo docker-compse up
 ```
 - 別のターミナルを開いてそこで`main.tex`を編集する.
 - `.pdf`を確認するには, pdfビューアーの`zathura`を使うとvimのキーバインドで閲覧, 操作ができる.
-```bash
+```shell
 sudo apt update
 sudo apt install zathura
 # --forkをつけるとバックグラウンドでzathuraが起動する.
@@ -26,16 +26,16 @@ zathura --fork main.pdf
 
 ### 索引を出力する
 - 上記の`sudo docker-compose up`を実行する前に以下を行う.
-```bash
-sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/bash -c "uplatex main.tex && makeindex main.idx && uplatex main.tex && dvipdfmx main.dvi"
+```shell
+sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/sh -c "uplatex main.tex && makeindex main.idx && uplatex main.tex && dvipdfmx main.dvi"
 ```
 
 ### Dockerコンテナを使って手動でコンパイルする方法
-```bash
+```shell
 # Dockerの中に入らずにコンパイルする
-sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/bash -c "uplatex main.tex && dvipdfmx main.dvi"
+sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/sh -c "uplatex main.tex && dvipdfmx main.dvi"
 ```
-```bash
+```shell
 # Dockerの中に入ってコンパイルする
 sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja
 latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
@@ -44,7 +44,7 @@ latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
 ### コードのシンタックスハイライトで使用できる色を確認する
 - コードのシンタックスハイライトに`minted`を使用しているとして，以下を実行する.
 
-```bash
+```shell
 sudo docker-compose exec texlive sh
 pygmentize -L styles
 ```
