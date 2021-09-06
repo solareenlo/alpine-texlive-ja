@@ -32,5 +32,5 @@ jobs:
           context: .
           push: true
           tags: |
-            paperist/alpine-texlive-ja:latest
-            ghcr.io/paperist/alpine-texlive-ja:latest
+            solareenlo/alpine-texlive-ja:latest
+            ghcr.io/solareenlo/alpine-texlive-ja:latest

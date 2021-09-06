@@ -33,5 +33,5 @@ jobs:
           context: .
           push: true
           tags: |
-            paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
-            ghcr.io/paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
+            solareenlo/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
+            ghcr.io/solareenlo/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
