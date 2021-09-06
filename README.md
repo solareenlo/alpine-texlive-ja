@@ -41,6 +41,18 @@ sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja
 latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
 ```
 
+### コンテナを pull する
+```shell
+# From Docker Hub
+docker pull solareenlo/alpine-texlive-ja:latest
+```
+
+```shell
+# From GitHub Container Registry
+docker pull ghcr.io/solareenlo/alpine-texlive-ja:latest
+docker image tag ghcr.io/solareenlo/alpine-texlive-ja:latest solareenlo/alpine-texlive-ja:latest
+```
+
 ### コードのシンタックスハイライトで使用できる色を確認する
 - コードのシンタックスハイライトに`minted`を使用しているとして，以下を実行する.
 
