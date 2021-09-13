@@ -12,7 +12,7 @@ ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 # Reference: https://github.com/Paperist/docker-alpine-texlive-ja
 # install texlive
 RUN apk add --no-cache curl perl fontconfig-dev freetype-dev py-pygments && \
-    apk add --no-cache --virtual .fetch-deps wget xz tar && \
+    apk add --no-cache --virtual .fetch-deps wget xz tar
 WORKDIR /tmp/install-tl-unx
 COPY texlive.profile ./
 RUN wget -qO - ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz | \
