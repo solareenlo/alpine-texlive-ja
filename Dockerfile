@@ -12,12 +12,17 @@ ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 # Reference: https://github.com/Paperist/docker-alpine-texlive-ja
 # install texlive
 RUN apk add --no-cache curl perl fontconfig-dev freetype-dev py-pygments && \
-    apk add --no-cache --virtual .fetch-deps wget xz tar
-WORKDIR /tmp/install-tl-unx
-COPY texlive.profile ./
-RUN wget -qO - ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz | \
-    tar -xz --strip-components=1 && \
-    ./install-tl --profile=texlive.profile && \
+    apk add --no-cache --virtual .fetch-deps wget xz tar &&\
+    mkdir /tmp/install-tl-unx && \
+    wget -qO - ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz | \
+    tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
+    printf "%s\n" \
+      "selected_scheme scheme-basic" \
+      "tlpdbopt_install_docfiles 0" \
+      "tlpdbopt_install_srcfiles 0" \
+      > /tmp/install-tl-unx/texlive.profile && \
+    /tmp/install-tl-unx/install-tl \
+      --profile=/tmp/install-tl-unx/texlive.profile && \
     tlmgr install \
       collection-basic\
       collection-latex \
@@ -67,7 +72,6 @@ RUN mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/google && \
 # \usepackage[noto-jp]{pxchfon}% 後に読み込む
 
 WORKDIR /workdir
-RUN rm -fr /tmp/install-tl-unx
 
 CMD ["sh"]
 
