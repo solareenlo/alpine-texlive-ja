@@ -100,6 +100,7 @@ PRs accepted.
 MIT © solareenlo
 
 ## References
+- [vvakame/docker-review/noto-otc/](https://github.com/vvakame/docker-review/tree/master/noto-otc)
 - [frol/docker-alpine-glibc](https://github.com/frol/docker-alpine-glibc)
 - [Paperist/docker-alpine-texlive-ja](https://github.com/Paperist/docker-alpine-texlive-ja)
 - [モダンなLaTexで書いたレポートを簡単にdockerでPDFに変換してCIで配布する方法](https://qiita.com/eisoku9618/items/423a3638a727ea2846d5)
