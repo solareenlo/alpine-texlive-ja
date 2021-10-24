@@ -7,13 +7,13 @@ Forked from [umireon/docker-texci](https://github.com/umireon/docker-texci) \(un
 Forked from [Paperist/docker-alpine-texlive-ja](https://github.com/Paperist/docker-alpine-texlive-ja) \(under the MIT License\).
 
 ## Usage
-### docker-composeを使って自動でコンパイルする方法
+### docker composeを使って自動でコンパイルする方法
 ```shell
 git clone git@github.com:solareenlo/docker-alpine-texlive-ja.git
 cd docker-alpine-texlive-ja
 touch main.tex
 # 以下で`.tex`>`.dvi`>`.pdf`の流れで`.pdf`が自動生成される.
-sudo docker-compse up
+sudo docker compse up
 ```
 - 別のターミナルを開いてそこで`main.tex`を編集する.
 - `.pdf`を確認するには, pdfビューアーの`zathura`を使うとvimのキーバインドで閲覧, 操作ができる.
@@ -25,7 +25,7 @@ zathura --fork main.pdf
 ```
 
 ### 索引を出力する
-- 上記の`sudo docker-compose up`を実行する前に以下を行う.
+- 上記の`sudo docker compose up`を実行する前に以下を行う.
 ```shell
 sudo docker run --rm -it -v $PWD:/workdir solareenlo/alpine-texlive-ja /bin/sh -c "uplatex main.tex && makeindex main.idx && uplatex main.tex && dvipdfmx main.dvi"
 ```
@@ -57,7 +57,7 @@ docker image tag ghcr.io/solareenlo/alpine-texlive-ja:latest solareenlo/alpine-t
 - コードのシンタックスハイライトに`minted`を使用しているとして，以下を実行する.
 
 ```shell
-sudo docker-compose exec texlive sh
+sudo docker compose exec texlive sh
 pygmentize -L styles
 ```
 
